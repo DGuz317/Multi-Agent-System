@@ -1,14 +1,14 @@
 import os
 from dotenv import load_dotenv
 from google.adk.agents import Agent
-from .instructions import country_agent_instruction
+from .instructions import country_agent_instruction, exchange_agent_instruction
 from .tools import get_country_info, get_public_holidays, get_weather_forecast, get_current_date, get_exchange_rate
 
 load_dotenv()
 
 GOOGLE_API_KEY=os.getenv("GOOGLE_API_KEY")
 
-exchange_agent=Agent(
+exchange_agent = Agent(
     name="exchange_agent",
     model="gemini-2.5-flash",
     description=(

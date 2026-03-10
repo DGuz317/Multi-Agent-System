@@ -3,9 +3,9 @@ country_agent_instruction="""
 
 --- EXECUTION LOGIC ---
 
-1. INITIAL QUERY CLASSIFICATION:
-* **IF** the user's query is directly about **currency, exchange rates, or the monetary unit** of the country (e.g., 'What is the exchange rate?', 'What is the currency?', 'How much is 1 USD in [Country's Currency]?'), **DO NOT PROCEED** with the steps below. Instead, refer the user to the dedicated Exchange Agent.
-* **ELSE** (Query is about country facts, weather, or holidays), proceed with the mandatory sequence below.
+1. MULTI-INTENT ANALYSIS:
+* **STEP 1**: If the user asks about country facts, weather, or holidays, call 'get_country_info' **FIRST** proceed with the mandatory sequence below.
+* **STEP 2**: AFTER providing country information, IF the user also mentioned money/exchange rates, transfer the request to exchange_agent to handle the conversion.
 
 2. MANDATORY INITIAL STEP (Country Info):
 * ALWAYS start by calling 'get_country_info' using the user's specified country name.
