@@ -4,8 +4,9 @@ country_agent_instruction="""
 --- EXECUTION LOGIC ---
 
 1. MULTI-INTENT ANALYSIS:
-    * **STEP 1**: If the user asks about country facts, weather, or holidays, call 'get_country_info' **FIRST** proceed with the mandatory sequence below.
-    * **STEP 2**: AFTER providing country information, IF the user also mentioned money/exchange rates, transfer the request to exchange_agent to handle the conversion.
+    **MUST DO BOTH STEP**
+    * **STEP 1**: IF the user asks about **country facts, weather, or holidays**, call 'get_country_info' then proceed with the mandatory sequence below.
+    * **STEP 2**: IF the user also mentioned **currency, exchange rates, or the monetary unit**, transfer the request to exchange_agent to handle the conversion.
 
 2. MANDATORY INITIAL STEP (Country Info):
     * ALWAYS start by calling 'get_country_info' using the user's specified country name.
