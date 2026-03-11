@@ -1,25 +1,29 @@
+import logging
 import os
 from dotenv import load_dotenv
 from google.adk.agents import Agent
 from .instructions import country_agent_instruction, exchange_agent_instruction
-from .tools import get_country_info, get_public_holidays, get_weather_forecast, get_current_date, get_exchange_rate
+# from .tools import get_country_info, get_public_holidays, get_weather_forecast, get_current_date, get_exchange_rate
 from google.adk.tools.mcp_tool import MCPToolset, StreamableHTTPConnectionParams
+from google.adk.a2a.utils.agent_to_a2a import to_a2a
 
+logger = logging.getLogger(__name__)
+logging.basicConfig(format="[%(levelname)s]: %(message)s", level=logging.INFO)
+
+load_dotenv()
 
 country_agent_tool_set=MCPToolset(
     connection_params=StreamableHTTPConnectionParams(
-        url="http://localhost:8001/mcp"
+        url=os.getenv("MCP_SERVER_URL", "http://localhost:8001/mcp")
     ),
-
-tool_filter=["get_country_info","get_public_holidays","get_weather_forecast","get_current_date"]
+    tool_filter=["get_country_info","get_public_holidays","get_weather_forecast","get_current_date"]
 )
 
 exchange_agent_tool_set=MCPToolset(
     connection_params=StreamableHTTPConnectionParams(
-        url="http://localhost:8001/mcp"
+        url=os.getenv("MCP_SERVER_URL", "http://localhost:8001/mcp")
     ),
-
-tool_filter=["get_current_date","get_exchange_rate"]
+    tool_filter=["get_current_date","get_exchange_rate"]
 )
 
 load_dotenv()
@@ -44,4 +48,5 @@ country_agent = Agent(
     sub_agents=[exchange_agent]
 )
 root_agent=country_agent
+a2a_app = to_a2a(root_agent, port=10000)
 #We have to define it as a root agent.
