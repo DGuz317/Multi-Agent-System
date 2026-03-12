@@ -1,0 +1,17 @@
+{
+  "capabilities": {},
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["application/json"],
+  "description": "An agent that gives information about the exchange rates",
+  "name": "remote_exchange_agent",
+  "skills": [
+    {
+      "id": "exchange_agent",
+      "name": "Remote Exchange Agent",
+      "description": "An agent that gives information about the exchange rates",
+      "tags": ["currency", "exchange rate", "USD", "KRW"]
+    }
+  ],
+  "url": "http://localhost:8002/a2a/exchange_agent",
+  "version": "1.0.0"
+}

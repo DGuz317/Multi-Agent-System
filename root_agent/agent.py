@@ -1,11 +1,17 @@
 import logging
 import os
+
+from google.adk.agents.remote_a2a_agent import RemoteA2aAgent
+from google.adk.agents.remote_a2a_agent import AGENT_CARD_WELL_KNOWN_PATH
 from dotenv import load_dotenv
 from google.adk.agents import Agent
 from .instructions import country_agent_instruction, exchange_agent_instruction
 # from .tools import get_country_info, get_public_holidays, get_weather_forecast, get_current_date, get_exchange_rate
 from google.adk.tools.mcp_tool import MCPToolset, StreamableHTTPConnectionParams
 from google.adk.a2a.utils.agent_to_a2a import to_a2a
+
+import uvicorn
+from google.adk.cli.fast_api import get_fast_api_app
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(format="[%(levelname)s]: %(message)s", level=logging.INFO)
@@ -26,8 +32,13 @@ exchange_agent_tool_set=MCPToolset(
     tool_filter=["get_current_date","get_exchange_rate"]
 )
 
-load_dotenv()
-GOOGLE_API_KEY=os.getenv("GOOGLE_API_KEY")
+remote_exchange_agent = RemoteA2aAgent(
+    name="remote_exchange_agent",
+    description="An agent that gives information about the exchange rates",
+    agent_card=(
+        f"http://localhost:8002/a2a/exchange_agent{AGENT_CARD_WELL_KNOWN_PATH}"
+    ),
+)
 
 exchange_agent = Agent(
     name="exchange_agent",
