@@ -31,7 +31,27 @@ root_agent = Agent(
 # AGENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 app = get_fast_api_app(
-    agents_dir=os.path.abspath(os.path.dirname(r"C:/Users/nvdung1/Desktop/test/country_agent/exchange_agent")),
-    web=True,
+    agents_dir=os.path.abspath(os.path.dirname(r"C:/Users/nvdung1/Desktop/test/root_agent/")),
+    web=False,
     a2a=True
 )
+
+# app=to_a2a(root_agent, port=10002)
+
+# print("\n" + "="*50)
+# print("DANH SÁCH CÁC URL (ENDPOINTS) ĐÃ ĐƯỢC TẠO:")
+# print("="*50)
+
+# for route in app.routes:
+#     # Kiểm tra nếu là route API thông thường
+#     if hasattr(route, "methods") and hasattr(route, "path"):
+#         methods = ", ".join(route.methods)
+#         print(f"[{methods:^10}] -> {route.path}")
+#     # Kiểm tra nếu là các app được mount (như các router con của ADK)
+#     elif hasattr(route, "path"):
+#         print(f"[  MOUNTED  ] -> {route.path}")
+
+# print("="*50 + "\n")
+
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="0.0.0.0", port=10002)

@@ -1,0 +1,17 @@
+{
+  "capabilities": {},
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["application/json"],
+  "description": "An agent host that provides information about the country.",
+  "name": "host_agent",
+  "skills": [
+    {
+      "id": "host_agent",
+      "name": "Host Agent",
+      "description": "An agent host that provides information about the country.",
+      "tags": ["country", "host agent", "A2A"]
+    }
+  ],
+  "url": "http://localhost:10003/a2a/root_agent",
+  "version": "1.0.0"
+}
