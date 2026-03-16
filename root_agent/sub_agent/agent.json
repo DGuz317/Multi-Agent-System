@@ -12,6 +12,6 @@
       "tags": ["currency", "exchange rate", "USD", "KRW"]
     }
   ],
-  "url": "http://localhost:10002/a2a/sub_agent",
+  "url": "http://localhost:8002/a2a/sub_agent",
   "version": "1.0.0"
 }

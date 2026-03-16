@@ -12,6 +12,6 @@
       "tags": ["country", "host agent", "A2A"]
     }
   ],
-  "url": "http://localhost:10003/a2a/root_agent",
+  "url": "http://localhost:10000/a2a/root_agent",
   "version": "1.0.0"
 }
