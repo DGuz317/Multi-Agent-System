@@ -20,7 +20,6 @@ class ServiceConfig:
     port: int
     mode: StartMode
     startup_timeout: int = 15
-    # Internal: collects stderr lines for post-mortem reporting.
     _error_log: list[str] = field(default_factory=list, init=False, repr=False)
 
 # Add / remove services here.
