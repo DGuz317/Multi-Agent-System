@@ -1,12 +1,12 @@
-import subprocess
-import time
+import os
 import sys
+import time
 import socket
 import threading
-import os
-from dataclasses import dataclass, field
-from typing import Optional
+import subprocess
 from enum import Enum, auto
+from typing import Optional
+from dataclasses import dataclass, field
 
 
 class StartMode(Enum):
